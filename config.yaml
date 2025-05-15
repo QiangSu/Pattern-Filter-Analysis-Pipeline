@@ -1,0 +1,41 @@
+# config.yaml
+# Configuration for the scRNA-seq simulation pipeline
+
+# Base directory for simulation outputs
+base_dir: "simulated_data/my_simulation"
+
+# Input Reference FASTA file (Absolute path recommended)
+reference_fasta: "/home/data/qs/scRNA_simulation_data/Mus_musculus.GRCm38.cdna.all.fa"
+
+# Barcode whitelist file (Absolute path recommended)
+barcode_whitelist_path: "/home/data/qs/cellranger-8.0.1/lib/python/cellranger/barcodes/3M-february-2018.txt.gz"
+
+# --- Simulation Parameters (Step 1 - R script) ---
+n_cells: 1000 # Number of cells to simulate
+n_genes: 50000 # Target number of genes (will be limited by reference FASTA)
+n_groups: 5 # Number of cell types/clusters
+
+# --- Output Paths (Relative to base_dir) ---
+output_fastq_dir_rel: "polyester_output" # Directory for per-cell FASTA/FASTQ files
+ground_truth_matrix_rel: "ground_truth_matrix.csv" # Ground truth matrix output file
+ground_truth_celltypes_rel: "ground_truth_celltypes.txt" # Ground truth cell types output file
+cellranger_output_dir_rel: "cellranger_compatible_fastq" # Directory for combined Cell Ranger FASTQ
+
+# --- Cell Ranger FASTQ Output Parameters (Step 2 - Python script) ---
+cr_sample_name: "simulated" # Sample name for Cell Ranger output files (e.g., simulated_S1_R1_001.fastq.gz)
+barcode_length: 16 # Length of barcode
+umi_length: 12     # Length of UMI
+poly_t_length: 20  # Length of Poly-T tail to add to R1
+cr_read2_length: 150 # Length of Read 2 (cDNA sequence)
+
+# --- Script Paths (Relative to Snakefile location) ---
+scripts:
+  simulate_r: "scripts/step1_simulate_scRNA_seq_data_snakemake.R"
+  process_python: "scripts/step2_add_barcodes_umis_cellranger_snakemake.py"
+
+# --- Cell Ranger Output Filenames (derived from cr_sample_name) ---
+# These are derived from the config, but useful to define for outputs rule
+cr_r1_output: "simulated_S1_R1_001.fastq.gz" # Will be built using cr_sample_name
+cr_r2_output: "simulated_S1_R2_001.fastq.gz" # Will be built using cr_sample_name
+barcode_map_file: "simulated_barcode_mapping.txt" # Will be built using cr_sample_name
+

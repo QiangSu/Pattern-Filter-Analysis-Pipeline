@@ -1,0 +1,20 @@
+# environment.yml
+name: scrna_simulation
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  # For R script
+  - r-base=4.3 # Specify R version
+  - r-splatter
+  - r-polyester
+  - r-biostrings
+  - r-summarizedexperiment
+  - r-matrix # Explicitly include matrix
+  # For Python script
+  - python=3.10 # Specify Python version
+  - python-isal # Recommended for faster gzip
+  # For the workflow manager
+  - snakemake # Or mamba install -c bioconda mamba; mamba create -n snakemake snakemake
+
