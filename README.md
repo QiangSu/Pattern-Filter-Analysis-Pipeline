@@ -49,12 +49,14 @@ snakemake --cores 8 # Use a suitable number of cores
 # To run on a cluster, consult Snakemake documentation for cluster execution options
 # e.g., using --cluster
 ```
+
 # FASTQ Base Frequency Logo Generator
 This is a Python script designed to visualize the base composition (A, C, G, T, N) at each position within sequencing reads from a FASTQ file. It generates a sequence logo-style plot where the height of each nucleotide character at a given position is proportional to its frequency in the analyzed reads.
-
+**Sequence_logo.py**
 ## USAGE
+```bash
 python ./Sequence_logo.py --fastq_file ./T18VN-A30-rep2_score_filtered.fastq.gz --start_pos 1 --end_pos 34 --letter_width 0.8 --output ./T18VN-A30-rep2_score_filtered_1-34posi.png 
-
+```
 
 
 
