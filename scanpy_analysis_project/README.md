@@ -31,17 +31,38 @@ This project provides a robust workflow for analyzing scRNA-seq datasets. It lev
 
 ## Project Structure
 
-scanpy_analysis_project/
-├── scanpy_analysis_ratio_git.ipynb    # Main Jupyter Notebook for the analysis workflow
-├── data/
-│   └── filtered_feature_bc_matrix_WT_filtereddata_hd1/ # Input raw scRNA-seq data (e.g., 10x Genomics output)
-├── models/
-│   └── Mouse_Whole_Brain.pkl          # Pre-trained CellTypist model for cell type annotation
-├── references/
-│   └── cellmarker_mouse_brain_seq_exp_review.csv # Curated list of mouse brain cell markers
-├── results/                           # Directory to store analysis outputs (plots, tables, AnnData objects)
-├── .gitignore                         # Local Git ignore rules (e.g., for ‘results/’ and intermediate files)
-└── requirements.txt                   # Python dependencies specific to this Scanpy analysis
+This section outlines the organization of files and directories within the `scanpy_analysis_project`.
+
+### `scanpy_analysis_project/` (Root Directory)
+The main container for all analysis components.
+
+-   `scanpy_analysis_ratio_git.ipynb`:
+    The primary Jupyter Notebook containing the full single-cell RNA sequencing analysis workflow, from raw data processing to cell type annotation and specific "ratio" analyses.
+
+-   `data/`:
+    This directory holds the raw input single-cell RNA sequencing data.
+    -   `filtered_feature_bc_matrix_WT_filtereddata_hd1/`:
+        Contains the raw 10x Genomics output files (e.g., `matrix.mtx`, `features.tsv`, `barcodes.tsv`) for the WT (Wild Type) filtered dataset.
+
+-   `models/`:
+    Stores pre-trained computational models used for cell type prediction.
+    -   `Mouse_Whole_Brain.pkl`:
+        A pre-trained CellTypist model specifically designed for annotating cell types in mouse whole brain scRNA-seq data.
+
+-   `references/`:
+    Contains curated reference files that support the analysis, such as gene marker lists.
+    -   `cellmarker_mouse_brain_seq_exp_review.csv`:
+        A CSV file providing a curated list of known cell markers for mouse brain, potentially derived from experimental reviews or databases, used for validation or targeted analysis.
+
+-   `results/`:
+    An empty directory initially, designated to store all outputs generated during the analysis, including plots, tables, and processed AnnData objects. This directory is typically ignored by Git.
+
+-   `.gitignore`:
+    A local Git configuration file that specifies intentionally untracked files to ignore when pushing to the repository (e.g., the `results/` directory, temporary files).
+
+-   `requirements.txt`:
+    A list of Python package dependencies required to run this Scanpy analysis project, ensuring environment reproducibility.
+
 
 
 ## Setup and Installation
