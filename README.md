@@ -23,8 +23,8 @@ The pipeline is orchestrated using Snakemake for reproducibility.
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/yourusername/your_repo_name.git
-    cd your_repo_name
+    git clone https://github.com/QiangSu/Pattern-Filter-Analysis-Pipeline.git
+    cd Pattern-Filter-Analysis-Pipeline
     ```
 2.  **Create and activate the Conda/Mamba environment:**
     ```bash
